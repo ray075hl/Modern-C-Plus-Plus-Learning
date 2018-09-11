@@ -1,17 +1,19 @@
 #include "gmock/gmock.h"
+#include "Soundex.h"
+using namespace testing;
 
-class Soundex{
 
+
+
+class SoundexEncoding : public testing::Test {
+public:
+    Soundex soundex;
 };
 
-TEST(SoundexEncoding, RetainSoleLetterOfOneLetterWord) {
-    Soundex soundex;
+TEST_F(SoundexEncoding, RetainSoleLetterOfOneLetterWord) {
+    ASSERT_THAT(soundex.encode("A"), Eq("A000"));
 }
-/*
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
 
-    return a.exec();
+TEST_F(SoundexEncoding, PadsWithZerosToEnsureThreeDigits) {
+    ASSERT_THAT(soundex.encode("I"), Eq("I000"));
 }
-*/

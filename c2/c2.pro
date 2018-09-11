@@ -9,10 +9,20 @@ QT       += core
 QT       -= gui
 
 TARGET = c2
-CONFIG   += console
+CONFIG   += console C++11
 CONFIG   -= app_bundle
 
 TEMPLATE = app
 
+INCLUDEPATH += /home/hl/googletest/googlemock/include \
+               /home/hl/googletest/googletest/include
 
-SOURCES += main.cpp
+LIBS += -L/home/hl/googletest/googlemock/mybuild -lgmock -lgmock_main
+
+SOURCES += \
+    SoundexTest.cpp
+
+HEADERS += \
+    Soundex.h
+
+
